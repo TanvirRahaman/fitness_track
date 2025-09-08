@@ -1,5 +1,5 @@
 <?php
-// EmailExistance.php
+
 include('../models/User.php');
 
 session_start();

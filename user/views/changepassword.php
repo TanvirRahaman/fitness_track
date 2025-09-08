@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!$user) {
             $message = "User not found!";
         } elseif (!password_verify($current_password, $user['password'])) {
-            $message = "❌ Current password is incorrect.";
+            $message = "Current password is incorrect.";
         } elseif ($new_password !== $confirm_new_password) {
-            $message = "❌ New passwords do not match.";
+            $message = "New passwords do not match.";
         } elseif ($current_password === $new_password) {
-            $message = "❌ New password cannot be the same as the current password.";
+            $message = "New password cannot be the same as the current password.";
         } else {
 
             $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
@@ -116,13 +116,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if (currentPassword === newPassword) {
                 e.preventDefault();
-                errorMsg.textContent = "❌ New password cannot be the same as the current password.";
+                errorMsg.textContent = "New password cannot be the same as the current password.";
                 return;
             }
 
             if (newPassword !== confirmNewPassword) {
                 e.preventDefault();
-                errorMsg.textContent = "❌ New passwords do not match.";
+                errorMsg.textContent = "New passwords do not match.";
                 return;
             }
         });

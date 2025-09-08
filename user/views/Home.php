@@ -69,7 +69,7 @@ if (!isset($_SESSION['email'])) {
 <body>
     <div class="home">
         <div class="sidebar">
-            <p>✅ Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?>!</p>
+            <p> Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?>!</p>
             <button onclick="location.href='Profile.php'">Profile</button>
             <button onclick="location.href='verify_user.php'">Change Password</button>
 

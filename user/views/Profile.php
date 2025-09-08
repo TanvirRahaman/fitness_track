@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($conn->query($update_sql) === TRUE) {
         $showSuccessAlert = true;
     } else {
-        $message = "❌ Error updating profile: " . $conn->error;
+        $message = "Error updating profile: " . $conn->error;
     }
 
     $sql = "SELECT name, email, gender FROM users WHERE email='$email'";
@@ -161,7 +161,7 @@ $conn->close();
 
     <?php if ($showSuccessAlert): ?>
         <script>
-            alert("✅ Profile updated successfully!");
+            alert("Profile updated successfully!");
             window.location.href = '../views/Home.php';
         </script>
     <?php endif; ?>

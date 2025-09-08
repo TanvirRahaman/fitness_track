@@ -37,12 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../views/Home.php");
             exit();
         } else {
-            $_SESSION['login_error'] = "❌ Incorrect password.";
+            $_SESSION['login_error'] = "Incorrect password.";
             header("Location: ../views/Login.php");
             exit();
         }
     } else {
-        $_SESSION['login_error'] = "❌ No account found with that email.";
+        $_SESSION['login_error'] = "No account found with that email.";
         header("Location: ../views/Login.php");
         exit();
     }

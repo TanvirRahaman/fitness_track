@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm_password = $_POST['confirm_password'];
 
     if ($new_password !== $confirm_password) {
-        $message = "❌ Passwords do not match.";
+        $message = "Passwords do not match.";
     } else {
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>";
             exit();
         } else {
-            $message = "❌ Error updating password. Please try again.";
+            $message = "Error updating password. Please try again.";
         }
     }
 }
