@@ -17,14 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($new_password !== $confirm_password) {
         $message = "❌ Passwords do not match.";
     } else {
-        // 🔑 Hash the new password before saving
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
         $stmt = $conn->prepare("UPDATE users SET password=? WHERE email=?");
         $stmt->bind_param("ss", $hashed_password, $email);
 
         if ($stmt->execute()) {
-            // Clear session reset email and redirect
             unset($_SESSION['reset_email']);
             echo "<script>
                 alert('✅ Password changed successfully! Please log in.');
@@ -45,14 +43,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Reset Password</title>
     <style>
         body { background-color: moccasin; font-family: Arial, sans-serif; }
+
         #container {
-            background-color: maroon; color: white; width: 350px; padding: 40px;
-            border-radius: 15px; margin: 100px auto; text-align: center;
+            background-color: maroon; 
+            color: white; width: 350px; padding: 40px;
+            border-radius: 15px; 
+            margin: 100px auto; 
+            text-align: center;
         }
-        input, button { padding: 10px; margin: 10px 0; width: 90%; border-radius: 5px; border: none; }
-        button { background-color: #f0ad4e; font-weight: bold; cursor: pointer; }
-        .error { color: yellow; margin-bottom: 10px; }
-        a { color: lightgreen; text-decoration: none; margin-top: 15px; display: inline-block; }
+
+        input, button { 
+            padding: 10px; margin: 10px 0; width: 90%; 
+            border-radius: 5px; border: none; }
+
+        button { 
+            background-color: #f0ad4e; 
+            font-weight: bold; 
+            cursor: pointer; }
+
+        .error { 
+            color: yellow; 
+            margin-bottom: 10px; 
+        }
+
+        a { color: lightgreen; 
+            text-decoration: none; 
+            margin-top: 15px; 
+            display: inline-block; }
+
         a:hover { text-decoration: underline; }
     </style>
 </head>

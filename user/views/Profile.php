@@ -3,7 +3,6 @@ session_start();
 include('../models/User.php');
 include('../helpers/session.php'); 
 
-// Check if employee is logged in
 $email = $_SESSION['email'] ?? null;
 
 if (!$email) {
@@ -11,7 +10,6 @@ if (!$email) {
     exit();
 }
 
-// Fetch employee data
 $sql = "SELECT name, email, gender FROM users WHERE email='$email'";
 $result = $conn->query($sql);
 $employee = $result->fetch_assoc();
@@ -22,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $new_name = $conn->real_escape_string($_POST['name']);
     $new_gender = $conn->real_escape_string($_POST['gender']);
 
-    // Only allow updating name and gender, NOT email
     $update_sql = "UPDATE users SET name='$new_name', gender='$new_gender' WHERE email='$email'";
 
     if ($conn->query($update_sql) === TRUE) {
@@ -31,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $message = "❌ Error updating profile: " . $conn->error;
     }
 
-    // Refresh employee data
     $sql = "SELECT name, email, gender FROM users WHERE email='$email'";
     $result = $conn->query($sql);
     $employee = $result->fetch_assoc();
@@ -45,7 +41,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Employee Profile</title>
+    <title>User Profile</title>
     <style>
         body {
             background-color: moccasin;

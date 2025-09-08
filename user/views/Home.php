@@ -2,10 +2,9 @@
 session_start();
 include('../helpers/session.php'); 
 
-// ✅ Check if logged in (via session or cookie)
 if (!isset($_SESSION['email'])) {
     if (isset($_COOKIE['user_email']) && isset($_COOKIE['user_name'])) {
-        // Restore session from cookie
+
         $_SESSION['email'] = $_COOKIE['user_email'];
         $_SESSION['name'] = $_COOKIE['user_name'];
     } else {
@@ -74,8 +73,7 @@ if (!isset($_SESSION['email'])) {
             <button onclick="location.href='Profile.php'">Profile</button>
             <button onclick="location.href='verify_user.php'">Change Password</button>
 
-            <!-- ✅ Logout Button for Employee -->
-            <form action="../controllers/Logout.php" method="post">
+\            <form action="../controllers/Logout.php" method="post">
                 <button type="submit" class="logout-btn">🔓 Logout</button>
             </form>
         </div>

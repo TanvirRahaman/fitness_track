@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../models/User.php'); // DB connection
+include('../models/User.php');
 
 $message = "";
 
@@ -51,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Verify</button>
             <a href="../views/Home.php" class="btn-link">Back</a>
         </form>
-        <a href="Login.php">Back to Login</a>
     </div>
 </body>
 </html>

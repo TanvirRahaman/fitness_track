@@ -1,7 +1,6 @@
 <?php
-// changepassword.php
 session_start();
-include('../models/User.php'); // এখানে $conn আছে ধরে নিচ্ছি
+include('../models/User.php');
 
 $message = "";
 
@@ -14,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $new_password = $_POST['new_password'];
         $confirm_new_password = $_POST['confirm_new_password'];
 
-        // Step 1: Get user current hashed password
         $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -30,10 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } elseif ($current_password === $new_password) {
             $message = "❌ New password cannot be the same as the current password.";
         } else {
-            // Step 2: Hash new password
+
             $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
 
-            // Step 3: Update query
             $update_stmt = $conn->prepare("UPDATE users SET password = ? WHERE email = ?");
             $update_stmt->bind_param("ss", $hashedPassword, $email);
 
@@ -117,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             var confirmNewPassword = document.getElementById('confirm_new_password').value;
             var errorMsg = document.getElementById('message');
 
-            // Validation checks
             if (currentPassword === newPassword) {
                 e.preventDefault();
                 errorMsg.textContent = "❌ New password cannot be the same as the current password.";

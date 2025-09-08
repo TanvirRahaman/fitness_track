@@ -108,12 +108,12 @@
             var gender = document.querySelector('input[name="gender"]:checked');
 
             if (!name || !email || !password || !confirmPassword || !gender) {
-                alert("⚠️ All fields are required.");
+                alert("All fields are required.");
                 return false;
             }
 
             if (!/\S+@\S+\.\S+/.test(email)) {
-                alert("⚠️ Invalid email format.");
+                alert("Invalid email format.");
                 return false;
             }
 

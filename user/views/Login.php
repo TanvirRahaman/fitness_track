@@ -70,14 +70,13 @@ include('../helpers/session.php');
         <input type="password" id="password" name="password" placeholder="Enter your password" required>
         <br><br>
 
-        <!-- ✅ Remember Me -->
         <label>
             <input type="checkbox" name="remember"> Remember Me
         </label>
         <br><br>
 
         <input type="submit" value="Login">
-        <!-- ✅ Back Button -->
+
         <br>
         <a href="../../index.php">
             <button type="button" class="back-button">← Back to Main Page</button>

@@ -3,15 +3,12 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Inactivity limit (60 seconds)
 $inactive_limit = 60;
 
-// Auto logout if inactive
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $inactive_limit)) {
     session_unset();
     session_destroy();
 
-    // Optional: Clear cookies also
     setcookie("user_email", "", time() - 3600, "/");
     setcookie("user_name", "", time() - 3600, "/");
 
@@ -19,17 +16,12 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 
     exit();
 }
 
-// Update last activity time
 $_SESSION['last_activity'] = time();
 
-// Prevent session fixation
 if (!isset($_SESSION['initiated'])) {
     session_regenerate_id(true);
     $_SESSION['initiated'] = true;
 }
-
-// Utility functions
-
 function setSession($key, $value) {
     $_SESSION[$key] = $value;
 }
